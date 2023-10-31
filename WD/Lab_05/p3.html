@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P3</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+
+        context.strokeStyle = "red";
+        context.lineWidth = 2;
+
+        context.strokeRect(50, 50, 100, 150);
+
+        context.beginPath();
+        context.arc(100, 125, 40, 0, 2 * Math.PI);
+        context.strokeStyle = "green";
+        context.stroke();
+        context.closePath();
+    </script>
+</body>
+</html>
