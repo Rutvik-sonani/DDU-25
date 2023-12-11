@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.html</title>
+</head>
+<body>
+    
+    <canvas id="myCanvas" width="500" height="300" style="border:2px solid #000000; "">
+    </canvas>
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        
+        ctx.beginPath();
+        ctx.arc(100, 80, 50, 0, 2 * Math.PI);
+        ctx.strokeStyle="#052A9E";
+        ctx.lineWidth = 8;
+        ctx.stroke();
+       
+        ctx.beginPath();
+        ctx.arc(220, 80, 50, 0, 2 * Math.PI);
+        ctx.strokeStyle="#000000 ";
+        ctx.lineWidth = 8;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(340, 80, 50, 0, 2 * Math.PI);
+        ctx.strokeStyle="#F50B0B";
+        ctx.lineWidth = 8;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(160, 130, 50, 0, 2 * Math.PI);
+        ctx.strokeStyle="#F5EE0B";
+        ctx.lineWidth = 8;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(280, 130, 50, 0, 2 * Math.PI);
+        ctx.strokeStyle="#1DF50B";
+        ctx.lineWidth = 8;
+        ctx.stroke();
+
+        ctx.fillStyle =" #000000 ";
+    ctx.font = "bold 40px Arial";
+    ctx.fillText("Cutlerville - 2022", 100, 260);
+   
+        </script>
+</body>
+</html>

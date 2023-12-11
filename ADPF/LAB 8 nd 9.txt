@@ -1,0 +1,165 @@
+Practical 8 Qutions : 
+
+Algorithm Development and Programming Fundamentals
+MCA SEM-1
+Functions
+1. Write a C program to collect two numbers from the user and find all prime
+numbers, armstrong numbers and perfect numbers between them using
+functions.
+2. Write a C program to allow the user input an integer number in decimal
+format. Provide users with a facility to convert the entered number to
+Hexadecimal, Octal and Binary formats.
+3. Write a C program to solve the following series for N terms using separate
+functions.
+1 1 + 4 – 9 + 16 – 25 +………….up to N
+2 1 + ¼ + 1/9 + 1/16 + …………up to N.
+4. Compute the lengths of three sides of a triangle formed by three points
+whose coordinates are given. Check whether a triangle can be formed or
+not. Then compute the area of the triangle. Next, take a point as input from
+the user and check whether it is inside or outside the triangle.
+You can use the following function signatures:
+●double getLength(int point_1_x, int point_1_y, int
+point_2_x, int point_2_y);
+●double getArea(double side_1, double side_2, double
+side_3);
+●int checkPointLocation(int x_points[], int y_points[],
+int new_x, int new_y)
+Hint:
+When a point resides inside a triangle, the sum of the areas of the triangles
+formed by taking two adjacent vertices and the point together must be the
+same as the area of the triangle.
+5. Write functions to convert feet to inches, convert inches to centimeters, and
+convert centimeters to meters. Write a program that prompts a user for a
+measurement in feet and converts and outputs this value in meters.
+Hint: 1 ft = 12 inches, 1 inch = 2.54 cm, 100 cm = 1 meter
+6. Write a C program to calculate the power of an integer using recursion.
+7. Run the following program using GCC compiler. Trace the function calls
+for the following input.
+Input: .UDD ot wmocleW
+#include <stdio.h>
+void fun1();
+int main() {
+printf("Enter a sentence: ");
+fun1();
+return 0;
+}
+void fun1() {
+char c;
+scanf("%c", &c);
+if (c != '\n') {
+fun1();
+printf("%c", c);
+}
+}
+8. Write a C program to find Factorial of a Number - N using Recursion.
+9. Write a C program to find nth term in Fibonacci Series using Recursion.
+10. Write a program in C to count the digits of a given number using
+recursion.
+11. Write a program in C to find the sum of digits of a number using
+recursion.
+
+
+Practical 9 Qutions : 
+
+
+Algorithm Development and Programming Fundamentals
+MCA SEM-1
+Recursion and User Defined Data Types
+1. Write a structure to input the roll number, name, and marks of 5 subjects of a
+student. Print input data, total marks, and percentages in a proper format. (Use
+array within structures to store multiple students and create separate functions for
+printing, collecting, and computing student information)
+2. Take the input for book category, book code, book title, author name, price, edition,
+and the number of copies available for 10 books using structure. Print the input
+data values along with the total amount for all books in a proper format. (make
+proper use of an array of structures and functions)
+3. Write a simple program to give a demonstration of Union in C.
+
+
+Practical 9 Program :
+
+1. #include<stdio.h>
+
+struct StudentData{
+    int rno;
+    char name[25];
+    int marks[5];
+    int total=0,perce;
+}stud;
+
+struct StudentData getData(){
+
+    struct StudentData s1;
+
+    printf("Enter student rollno : ");
+    scanf("%d",&s1.rno);
+
+    printf("Enter student name : ");
+    scanf("%s",s1.name);
+
+    for(int i=1;i<=5;i++){
+        printf("Enter student sub%d mark : ",i);
+        scanf("%d",&s1.marks[i]);
+        s1.total = s1.marks[i] + s1.total;
+    }
+
+    s1.perce = s1.total*5/100;
+
+    return s1;
+}
+
+void displayData(struct StudentData s){
+    printf("\nRollno : %d",s.rno);
+    printf("\nName : %s",s.name);
+    for(int i=1;i<=5;i++){
+        printf("\nSub%d mark : %d",i,s.marks[i]);
+    }
+    printf("\n\nTotal Marks : %d",s.total);
+    printf("\nTotal Marks : %d",s.total);
+}
+
+int main(){
+    struct StudentData s;
+
+    s = getData();
+
+    displayData(s);
+    
+    return 0;
+}
+
+
+2. #include<stdio.h>
+
+struct BookData{
+
+    char bookcat[50],booktitle[50],aname[50];
+    int bookcode,price,edition,noofcopy,totalamt;
+
+}book;
+
+struct BookData getData(){
+
+    struct BookData b1;
+
+    return b1;
+}
+
+void calc(){
+
+}
+
+void displayData(){
+
+}
+
+void main(){
+
+    struct BookData b;
+
+    b = getData();
+
+    displayData(b);
+
+    return 0;
+}

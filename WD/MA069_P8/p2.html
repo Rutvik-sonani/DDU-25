@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program 2</title>
+    <style>
+      h1 {
+        border-bottom: 1px solid;
+        padding-bottom: 10px;
+      }
+      input[type="text"] {
+        color: green;
+      }
+      .fields {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Sign Up</h1>
+      <form action="">
+        <div class="fields">
+          <label for="fname">First name : </label>
+          <input type="text" id="fname" />
+        </div>
+        <div class="fields">
+          <label for="lname">Last name : </label>
+          <input type="text" id="lname" />
+        </div>
+        <div class="fields">
+          <label for="pwd">Create Password : </label>
+          <input type="password" id="pwd" />
+        </div>
+        <div class="fields">
+          <label for="dob">Enter DOB : </label>
+          <input type="date" id="dob" />
+        </div>
+        <div >
+          <input type="submit" value="Sign up" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

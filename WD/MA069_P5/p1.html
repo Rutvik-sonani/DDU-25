@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p1.html</title>
+</head>
+<body>
+    <canvas id="myCanvas" height="500" width="500">
+    </canvas>
+    <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+ 
+    ctx.beginPath();
+    ctx.arc(120, 120, 50, 0, 2 * Math.PI);
+    ctx.fillStyle ="#F5B23D ";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.rect(20, 30, 100, 100);
+    ctx.fillStyle ="#73A1A6";
+    ctx.fill();
+    
+    
+</script>
+</body>
+</html>

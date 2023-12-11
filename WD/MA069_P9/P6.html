@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var ch;
+        ch = prompt("Enter choice (c,r,t)");
+        switch(ch){
+            case "c":
+                var s1 = parseInt(prompt("Enter r no : "));
+                document.write("Circle : "+(s1*3.14*3.14));
+                break;
+            case "r":
+                var s21 = parseInt(prompt("Enter h no : "));
+                var s22 = parseInt(prompt("Enter b no : "));
+                document.write("Reactangle : "+(0.5*s21*s22));
+                break;
+            case "t":
+                var s31 = parseInt(prompt("Enter l no : "));
+                var s32 = parseInt(prompt("Enter b no : "));
+                document.write("Triangle : "+(s31*s32));
+                break;
+            default:
+                alert("Enter Proper no");
+        }
+    </script>
+</body>
+</html>

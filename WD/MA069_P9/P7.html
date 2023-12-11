@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var unmae = prompt("Enter Username : ");
+        var pass = prompt("Enter Password : ");
+
+        if(unmae == null){
+            alert("Please enter Username");
+        }else if(pass == null){
+            alert("Please enter Password");
+        }else if(unmae == "Admin" && pass == "Admin"){
+            document.write("Login successful");
+        }else if(unmae != "Admin"){
+            alert("Enter correct Username");
+        }else if(pass != "Admin"){
+            alert("Enter correct Password");
+        }else{
+            document.write("Login unsuccessful");
+        }
+    </script>
+</body>
+</html>

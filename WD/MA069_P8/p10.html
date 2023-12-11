@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program 10</title>
+    <style>
+      .Container {
+        display: grid;
+        gap: 4px;
+        grid-template-areas: "head head head head head" "nav con con con oth" "foot foot foot foot foot";
+      }
+      .Container > div {
+        background-color: black;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+      #Header {
+        grid-area: head;
+      }
+      #Menu {
+        grid-area: nav;
+        min-height: 300px;
+      }
+      #Content {
+        grid-area: con;
+        min-height: 300px;
+      }
+      #Other {
+        grid-area: oth;
+        min-height: 300px;
+      }
+      #Footer {
+        grid-area: foot;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Container">
+      <div id="Header">Header</div>
+      <div id="Menu">Menu</div>
+      <div id="Content">Content</div>
+      <div id="Other">Other</div>
+      <div id="Footer">Footer</div>
+    </div>
+  </body>
+</html>

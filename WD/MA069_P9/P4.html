@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var s1 = parseInt(prompt("Enter 1st no : "));
+        var s2 = parseInt(prompt("Enter 2nd no : "));
+        var s3 = parseInt(prompt("Enter 3rd no : "));
+
+        var r1 = s1%10;
+        var r2 = s2%10;
+        var r3 = s3%10;
+
+        // document.write("1 : " + r1 + " " + r2 + " " + r3);
+
+        if(r1==r2 && r2 == r3){
+            document.write("no is same");
+        }else{
+            document.write("no is not same");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+1 perform the following using MySQL
+Create following tables choose appropriate datatype. And insert appropriate
+records according to your choice.
+Student(studid,sname) Itemid is primary key
+Book(bookid,title,subject,price) bookid is primary key , title should be unique
+Issue(studid,bookid,issuedate) studid is foreign key form student table
+bookid is foreign key form Book table.
+
+CREATE TABLE :
+
+=> create table student (studid int primary key,sname varchar(255) not null);
+
+=> create table book (bookid varchar(255) primary key,title varchar(255) unique not null,subject varchar(255) not null,price decimal(10, 2) not null);
+
+=> create table issue (studid int,bookid varchar,issuedate date,primary key (studid, bookid),foreign key (studid) references student(studid),foreign key (bookid) references book(bookid));
+
+INSERT RECORD : 
+
+=> insert into student values(101,'sameer'),(102,'jay'),(103,'jignesh'),(104,'savan');
+
+=> insert into book values('101','abc1','dbms',550),('102','xsf1','adpf',450),('301','wdx1','computer',750),('201','nwx1','networking',500);
+
+=> insert into issue values(101,'101','2016-12-01'),(102,'102','2019-05-06'),(103,'201','2021-01-05');
+
+*******Perform following query********
+
+
+1. Display all the Book details of subject computer. 
+
+=> select  * from book where subject = 'Computer';
+
+2. Display all the studid who has issue book after 12-12-2018.
+
+=> select distinct studid from Issue where issuedate > '2018-12-12';
+
+3. Display all the bookname who has issued by student Sameer.
+
+=> select book.title from book join issue on book.bookid = issue.bookid join Student on Issue.studid = student.studid where student.sname = 'sameer';
+
+4. Display sname who has isuue bookid=101.
+
+=> select student.sname from student join issue on student.studid = issue.studid where     issue.bookid = '101';
+
+5. Display the all the student id who issued the books of subject networking.
+
+=> select studid from issue where bookid in (select bookid from book where subject = 'networking');
+
+6. Display all the student id who issued the books of subject DBMS.
+
+=> select studid from issue where bookid in (select bookid from book where subject = 'dbms');
+
+7. Count number of students who has issue the book with subject DBMS.
+
+=> select count(distinct studid) as student_count from issue where bookid in (select bookid from book where subject = 'dbms');
+
+8. Update the subject of bookid 201 to physics.
+
+=> update book set subject = 'physics' where bookid = '201';
+
+9. display total price of each subject book.
+
+=> select subject, sum(price) as total_price from book group by subject;
+
+10. Create procedure which pass book title as argument and in OUT paramerter
+it stores the count value of how may time given book is issued.
+
+=> delimiter $$ // change delimiter to $$
+
+=> create procedure counttitle(in book_title varchar(255), out issue_count int)
+begin
+    select count(*) into issuance_count from issue join book on issue.bookid = book.bookid where        book.title = book_title;
+end $$
+
+=> delimiter ;
+
+=> call :
+
+=> call counttitle('dbms', @issue_count);
+
+=> select @issue_count;
+
+11. create a function called funct() pass the two arguments of date datatype
+date1 and date2 and display the bookid which are issued between date1 and
+date2 .
+
+=> delimiter $$
+
+=> create function funct(date1 date, date2 date)
+returns varchar(255)
+begin
+    declare bookid varchar(255);
+
+    select group_concat(bookid) into bookid from issue where issuedate between date1 and date2;
+
+    return bookid;
+end $$
+
+=> delimiter ;
+
+=> call :
+
+=> select funct('2023-01-01', '2023-12-31');
+
+12. update the price based on following condition
+If book price less than 500 add 100 to price.
+If book price is between 501 -700 then add 50 rs to price
+Else book price is greater than 700 then add 20 rs to price.
+
+=> update book set price = 
+    case 
+        when price < 500 then price + 100
+        when price between 501 and 700 then price + 50
+        else price + 20
+    end;

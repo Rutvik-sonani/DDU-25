@@ -1,0 +1,19 @@
+1. select productno from product_master productno not in(select productno from sales_order_details);
+
+2. select product from product_master productno in (select productno from sales_order_details);
+
+3. select description from product_master productno in(select productno from sales_order_details where orderno in(select orderno from sales_order delytype='f'));
+
+4. select * from product_master where sellprice < (select sellprice from product_master where productno='p0345';
+
+5. select name from client_master where clientno in(select clientno from sales_order where orderstatus='inprogress';
+
+6. select salesmanname from salesman_master where salesmanno in(select salesmanno from sales_order where orderstatus='cancelled';
+
+7. select name from client_master where clientno in (select clientno from sales_master where orderdate < '2005-01-01';
+
+8. select * from salesman_master where salesmanno not in(select salesmanno from sales_order;
+
+9. select name from client_master where clientno in (select clientno from sales_order where delytype='f');
+
+10. select * from client_master where clientno in(select clientno from sales_order where salesmanno='s00002';

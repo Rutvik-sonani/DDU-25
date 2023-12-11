@@ -2,22 +2,33 @@
 #include <math.h>
 
 int main() {
-    double M, S, F;
+    // double n, S, F;
+    double n;
+    float y = 1;
+    float e = 0.000001;
 
     printf("Enter the no : ");
-    scanf("%lf", &M);
+    scanf("%lf", &n);
 
-    if (M < 0) {
+    float x = n;
+
+    if (n < 0) {
         printf("Negative value is not valid input\n");
     } else {
-        S = M / 2;
-        F = S;
+        // S = n / 2;
+        // F = S;
 
-        do {
-            S = (F + M / F) / 2;
-        } while (fabs(F - S) >= 0.000001);
+        // do {
+        //     S = (F + n / F) / 2;
+        // } while (fabs(F - x) >= 0.000001);
 
-        printf("%.6lf\n", S);
+        while (x - y > e) {
+            x = (x + y) / 2;
+            y = n / x;
+        }
+    // return x;
+
+        printf("%f\n", x);
     }
 
     return 0;

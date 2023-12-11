@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program 1</title>
+    <style>
+      .container {
+        border: 1px solid black;
+        width: 500px;
+        margin: auto;
+        padding: 20px;
+      }
+      .box_container {
+        display: flex;
+        gap: 10px;
+      }
+      .box1,
+      .box2,
+      .box3 {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid gray;
+        border-radius: 15px;
+      }
+      .box2{
+        border-radius: 8px;
+      }
+      .box3{
+        border-radius: 50%;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Rounded corner buttons</h2>
+
+      <div class="box_container">
+        <div class="box1">click</div>
+        <div class="box2">click</div>
+        <div class="box3">click</div>
+      </div>
+    </div>
+  </body>
+</html>

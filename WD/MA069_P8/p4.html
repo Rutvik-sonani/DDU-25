@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program 4</title>
+    <style>
+      .Container {
+        display: flex;
+      }
+      .innerContainer {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+      }
+      .innerContainer:nth-child(even) {
+        background: #d3d3d3;
+      }
+      .innerContainer:nth-child(odd) {
+        background: #a595a3;
+      }
+      .box1,
+      .box2,
+      .box3,
+      .box4,
+      .box5,
+      .box6,
+      .box7,
+      .box8 {
+        width: 100px;
+        height: 100px;
+        background-color: #9eb6c1;
+      }
+      .box1 {
+        border-radius: 90px 30px 15px 5px;
+      }
+      .box2 {
+        border-radius: 90px 40px 5px 40px;
+      }
+      .box3 {
+        border-radius: 125px 20px 125px 20px;
+      }
+      .box7 {
+        border-radius: 25px 8px 25px 8px;
+      }
+      .box5 {
+        border-radius: 50%/10%;
+      }
+      .box4,
+      .box6,
+      .box8 {
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Container">
+      <div class="innerContainer">
+        <div class="box1"></div>
+      </div>
+      <div class="innerContainer">
+        <div class="box2"></div>
+      </div>
+      <div class="innerContainer">
+        <div class="box3"></div>
+      </div>
+      <div class="innerContainer">
+        <div class="box4"></div>
+      </div>
+      <div class="innerContainer">
+        <div class="box5"></div>
+      </div>
+      <div class="innerContainer">
+        <div class="box6"></div>
+      </div>
+      <div class="innerContainer">
+        <div class="box7"></div>
+      </div>
+      <div class="innerContainer">
+        <div class="box8"></div>
+      </div>
+    </div>
+  </body>
+</html>
