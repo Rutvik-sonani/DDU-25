@@ -1,0 +1,125 @@
+1. delimiter ;
+
+create procedure bonus()
+begin
+    declare emp_id int;
+    declare emp_salary decimal(10, 2);
+
+    declare emp_cur cursor for
+        select id, salary from employees where salary > 2000;
+
+    declare continue handler for not found set done = 1;
+
+    open emp_cur;
+
+    label1: loop
+        fetch emp_cur into emp_id, emp_salary;
+        if done=1 then
+            leave label1;
+        end if;
+
+        declare bonus decimal(10, 2);
+        set bonus = 0.10 * emp_salary;
+
+        select emp_id,bonus;
+    end loop;
+
+    close emp_cur;
+end;
+
+2. delimiter ;
+
+create procedure calc_mark(in sub_id int)
+begin
+    declare std_id int;
+    declare marks int;
+    declare total_marks int default 0;
+
+    declare marks_cur cursor for
+        select std_id, marks from stud_sub where sub_id = sub_id;
+
+    declare continue handler for not found set done = 1;
+
+    open marks_cur;
+
+    label1: loop
+        fetch marks_cur into std_id, marks;
+        if done=1 then
+            leave label1;
+        end if;
+
+        set total_marks = total_marks + marks;
+    end loop;
+
+    close marks_cur;
+
+    select total_marks;
+end;
+
+3. delimiter ;
+
+create procedure updatesalary()
+begin
+    declare emp_id int;
+    declare emp_salary decimal(10, 2);
+
+    declare update_salary cursor for
+        select salary from employees;
+
+    declare continue handler for not found set done = 1;
+
+    open update_salary;
+
+    label1: loop
+        fetch update_salary into emp_salary;
+        if done=1 then
+            leave label1;
+        end if;
+
+        update emp set emp_salary=emp_salary+300;
+    end loop;
+
+    close update_salary;
+end;
+
+4. delimiter ;
+
+create procedure calc_qty(in order_id int,out total_qty int)
+begin
+    declare oid int;
+    declare cotqty int;
+	
+     declare calc_total_qty cursor for
+	select order_id,count(qty) from sales_order_details where order_id = order_id group by order_id;
+    
+    declare continue handler for not found set done = 1;
+
+    open calc_total_qty;
+
+    fetch calc_total_qty into oid, cotqty;
+
+    set total_qty = cotqty;	
+
+    close calc_total_qty;
+
+end;
+
+5. delimiter;
+
+create procedure calc_price(in ono varchar(255), out tprice int)
+begin
+    declare total decimal(10, 2);
+
+    declare calc_total_price cursor for
+        select sum(sd.qty * pm.price) as total_price from sales_order_details sd, product_master pm where sd.product_id =          pm.product_id and sd.order_number = order_number;
+
+    declare continue handler for not found set done = 1;
+
+    open calc_total_price;
+
+    fetch calc_total_price into total;
+
+    set tprice = total;
+
+    close calc_total_price;
+end;

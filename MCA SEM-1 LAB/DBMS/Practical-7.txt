@@ -1,0 +1,25 @@
+1. select * from client_master left join sales_order on client_master.clientno = sales_order.clientno;
+
+2. select salesmanname from salesman_master inner join sales_order on salesman_master.salesmanno = sales_order.salesmanno;
+
+3. select productname from product_master inner join sales_order_details on product_master.productno = sales_order_details.productno;
+
+4. select salesmanname, city, salesamt, clientno, orderno, orderdate, orderstatus from salesman_master right join sales_order on salesman_master.salesmanno = sales_order.salesmanno;
+
+5. select description,qtyonhand,reordervl, sellprice, qtyorder, orderno from product_master left join on sales_order_details.productno = product_master.productno;
+
+1. select productno,sellprice,
+   case
+   when sellprice<500 Then 'its not costaly'
+   else 'it is costaly'
+   end as result from product_master;
+
+2. select salesmanno,sales_amt,
+    case
+    when sales_amt<=1000 and sales_amt>=2000 then (sales_amt*2/100)
+    when sales_amt<=2001 and sales_amt>=3000 then (sales_amt*3/100)
+    when sales_amt>3000 then (sales_amt*5/100)
+    else 'no bonus'
+    end as bonus from salesman_master;
+
+3.  

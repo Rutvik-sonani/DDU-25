@@ -1,0 +1,92 @@
+--------------------------------- student -----------------------------------------
+
+create table student(
+	sid int(5),
+	name varchar(20),
+	primary key(sid)
+);
+
+insert into student values(1,'simon'),
+(2,'alvin'),
+(3,'vidya'),
+(4,'rohit'),
+(5,'kaushik'),
+(6,'reema');
+
+---------------------------------- subject -----------------------------------------
+create table subject (
+	subid int(5),
+	sname varchar(20),
+	primary key(subid)
+);
+
+insert into subject values(1,'CONSM'),
+(2,'DBMS'),
+(3,'physics'),
+(4,'Maths'),
+(5,'Biology');
+------------------------------------ stud_sub ----------------------------------------
+create table stud_sub(
+	sid int(5),
+	subid int(5),
+	teachername varchar(20),
+	marks int(3),
+	foreign key(sid) references student(sid),	
+	foreign key(subid) references subject(subid)
+);
+
+insert into stud_sub values
+(1, 1, 'Reshma' ,62),
+(1, 2, 'Vihar' ,50),
+(1, 3, 'Bhavik' ,55),
+(2, 1, 'Jigar' ,64),
+(2, 2, 'kamlesh' ,68),
+(2, 3, 'suhana' ,72),
+(2, 4, 'Reshma' ,59),
+(2, 5, 'Vihar' ,71),
+(3, 1 ,'Jigar' ,65),
+(3, 2 ,'Bhavik' ,66),
+(3, 3 ,'suhana' ,54),
+(4, 1 ,'Vihar' ,81),
+(4, 4 ,'suhana' ,64),
+(4, 5 ,'Jigar' ,64),
+(5, 2 ,'kamlesh' ,70),
+(5, 3, 'Reshma' ,56),
+(6, 1, 'Bhavik' ,76),
+(6, 4, 'Jigar' ,68);
+
+1. select count(sid) from stud_sub where subid in(select subid from subject where sname='physics'); 
+
+2. select max(marks) from stud_sub where sid=1;
+
+3. select max(marks),subid from stud_sub group by subid;
+
+4. select max(marks),sid from stud_sub group by sid;
+
+5. select sum(marks) as total from stud_sub group by subid;
+
+6. select count(sid) as student,subid from stud_sub group by subid;
+
+7. select subid,sum(marks) as total from stud_sub group by subid having total > 300;
+
+8. select sname from subject where subid in(select subid from stud_sub group by subid having sum(marks) > 300);
+
+9. select count(sid) as student ,teachername from stud_sub group by teachername;
+
+10. select count(sid) as student ,teachername from stud_sub group by teachername having student > 3;
+
+11. select distinct teachername from stud_sub where subid in (select subid from subject where sname='DBMS');
+
+12. 
+
+13. select count(subid),teachername from stud_sub group by teachername;
+
+14. select count(subid) as subject,teachername from stud_sub group by teachername having subject > 2;
+
+15. select sname from subject where subid in(select subid from stud_sub group by subid having count(teachername) > 2);
+
+16. select sum(marks) as marks from stud_sub where sid in(select sid from student where name='vidya') group by sid;
+
+17. select teachername from stud_sub group by teachername having sum(marks) > 180;
+
+

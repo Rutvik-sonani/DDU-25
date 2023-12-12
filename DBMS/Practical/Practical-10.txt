@@ -1,0 +1,31 @@
+1. Create Trigger  Trig1 which execute after update on product_master. While updating value of any sellprice it should also update product_rate filed value of same prodcutno in sales_order_detail table.
+
+create trigger t1 after update on product_master
+for each row
+begin
+    if new.sellprice != old.sellprice then
+        update sales_order_detail
+        set product_rate = new.sellprice
+        where productno = new.productno;
+    end if;
+end;
+
+
+2. Create Trigger Trig2 Which execute before delete on employee table. It copy the deleted record to the new table deleted_emp. 
+(create a deleted_emp table first which contains same attribute and datatype as employee)
+
+create trigger t2 after delete on employee
+for each row
+begin
+    insert into deleted_emp(emp_id, emp_name, emp_salary) values(OLD.emp_id,OLD.emp_name,OLD.emp_salary);
+end;
+
+3. Create Trigger Trig3 Which execute  before insert new record in employee table if new records joining date is after 01-01-2021 then insert new record in deleted_emp table also.  
+
+create trigger t3 after delete on employee
+for each row
+begin
+    if new.jd > '2021-01-01' then
+          insert into deleted_emp(emp_id, emp_name, emp_salary) values(NEW.emp_id,NEW.emp_name,NEW.emp_salary);
+    end if;
+end;

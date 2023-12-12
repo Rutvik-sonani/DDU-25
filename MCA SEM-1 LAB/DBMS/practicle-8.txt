@@ -1,0 +1,237 @@
+1.Create procedure called proc1 which declare one integer variable and one varchar
+variable and display both the variables.
+=>CREATE PROCEDURE proc13()
+BEGIN
+    DECLARE myIntVar INT;
+    DECLARE myVarCharVar VARCHAR(255);
+
+    -- Assign values to the variables (you can modify as needed)
+    SET myIntVar = 123;
+    SET myVarCharVar = 'Hello, World!';
+
+    -- Display the variables
+    SELECT myIntVar , myVarCharVar;
+END//
+
+ call proc1()//
++-----------------+-----------------+
+| IntegerVariable | VarcharVariable |
++-----------------+-----------------+
+|             123 | Hello, World!   |
++-----------------+-----------------+
+
+2.Create procedure called proc2 in which declare the variable counter = and
+execute while loop until counter > 0 .
+=>CREATE PROCEDURE proc2()
+BEGIN
+    DECLARE counter INT DEFAULT 5; -- You can set the initial value of the counter
+
+    WHILE counter > 0 DO
+        -- Your logic here (you can perform any operations within the loop)
+        SELECT counter AS CurrentCounter;
+
+        -- Decrement the counter
+        SET counter = counter - 1;
+    END WHILE;
+END //
+
+call proc2()//
++----------------+
+| CurrentCounter |
++----------------+
+|              5 |
++----------------+
+1 row in set (0.01 sec)
+
++----------------+
+| CurrentCounter |
++----------------+
+|              4 |
++----------------+
+1 row in set (0.03 sec)
+
++----------------+
+| CurrentCounter |
++----------------+
+|              3 |
++----------------+
+1 row in set (0.06 sec)
+
++----------------+
+| CurrentCounter |
++----------------+
+|              2 |
++----------------+
+1 row in set (0.10 sec)
+
++----------------+
+| CurrentCounter |
++----------------+
+|              1 |
++----------------+
+
+3.create procedure called proc3, which pass the argurment N. and procedure make
+total of first N number. E.g N =5 then sum = (1+2+3+4+5) = 15 use while loop.
+=>CREATE PROCEDURE proc3(IN N INT)
+BEGIN
+    DECLARE sumResult INT DEFAULT 0;
+    DECLARE i INT DEFAULT 1;
+
+    WHILE i <= N DO
+        SET sumResult = sumResult + i;
+        SET i = i + 1;
+    END WHILE;
+
+    SELECT sumResult AS SumOfFirstNNumbers;
+END //
+
+ call proc3(5)//
++--------------------+
+| SumOfFirstNNumbers |
++--------------------+
+|                 15 |
++--------------------+
+
+4.create a procedure called proc4 which pass the student id in parameter and find
+average of marks of given student id from stud_sub table. E.g call proc2(1)
+=>create procedure proc4(IN studid int)
+begin
+	select avg(marks)from stud_sub where sid=studid group by sid;
+end// 
+
+mysql> call proc4(1)//
++------------+
+| avg(marks) |
++------------+
+|    55.6667 |
++------------+
+
+5. Create procedure called proc5 in which pass the number and display whether
+number is odd or even. [hint if mod(n,2) = 0 then ]
+=>CREATE PROCEDURE proc5(IN n INT)
+BEGIN
+    DECLARE resultMessage VARCHAR(50);
+
+    IF MOD(n, 2) = 0 THEN
+        SET resultMessage = CONCAT(n, ' is an even number.');
+    ELSE
+        SET resultMessage = CONCAT(n, ' is an odd number.');
+    END IF;
+
+    SELECT resultMessage AS Result;
+END //
+
+call proc5(5)//
++---------------------+
+| Result              |
++---------------------+
+| 5 is an odd number. |
++---------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call proc5(4)//
++----------------------+
+| Result               |
++----------------------+
+| 4 is an even number. |
++----------------------+
+
+6.create procedure called proc6 which pass the orderid as parameter and find the
+total quantity order form sales_order_detail, total of quantity order should be stored
+in OUT parameter. 
+=>create procedure proc6(IN oid varchar(7),OUT tqty int)
+begin
+	select sum(qtyordered) from sales_order_details where orderno = oid;
+end//
+
+call proc6('o19002',@tqty)//
++-----------------+
+| sum(qtyordered) |
++-----------------+
+|              11 |
++-----------------+
+
+=========================================================================================
+
+1.Create a function func1 which takes the number as parameter and return the value “odd” or “even” . 
+=>CREATE FUNCTION func1(n INT) RETURNS VARCHAR(5)
+DETERMINISTIC
+BEGIN
+    DECLARE result VARCHAR(5);
+
+    IF MOD(n, 2) = 0 THEN
+        SET result = 'even';
+    ELSE
+        SET result = 'odd';
+    END IF;
+
+    RETURN result;
+END //
+
+mysql>select func1(2)//
++----------+
+| func1(2) |
++----------+
+| even     |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select func1(7)//
++----------+
+| func1(7) |
++----------+
+| odd      |
++----------+
+
+2.Create a function func2() which take the age attribute of employee table, if age is
+<=25 status will be “young”, if age between 26 to 32 status ”middle” if age > 32
+status will be “old”. Function returns the status. Write a select query which display
+the name ,age and status of every employee.
+=>CREATE FUNCTION func2(ageget INT) RETURNS VARCHAR(10)
+DETERMINISTIC
+BEGIN
+    DECLARE status VARCHAR(10);
+
+    IF ageget <= 25 THEN
+        SET status = 'young';
+    ELSEIF ageget BETWEEN 26 AND 32 THEN
+        SET status = 'middle';
+    ELSE
+        SET status = 'old';
+    END IF;
+
+    RETURN status;
+END //
+
+ SELECT name, age, func2(age) AS status from employee//
++--------------+------+--------+
+| name         | age  | status |
++--------------+------+--------+
+| rohan patel  |   26 | middle |
+| virat        |   32 | middle |
+| sameer       |   32 | middle |
+| hares        |   24 | young  |
+| hema trivedi |   36 | old    |
+| vimal khatri |   38 | old    |
+| sunit        |   26 | middle |
+| reema        |   28 | middle |
+| ruhan        |   33 | old    |
+| suresh       |   25 | young  |
+| suhana       |   34 | old    |
++--------------+------+--------+
+
+3. Create a function fun3() which takes a orderno as input and returns the
+name(description) of the product . hint(use product_master and sales_order_detail)
+Use necessary select query to display function output.
+=>create function fun3(ordno varchar(10))returns varchar(30)
+DETERMINISTIC
+begin
+	declare pdec varchar(30);
+	select description into pdec from product_master where productno = (select productno from sales_
+	order_details where orderno = ordno);
+	
+	return pdec;
+end//
+
