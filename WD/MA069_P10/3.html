@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = "Global";
+
+        function checkScope() {
+            var b = "Local";
+            document.write("Inside function: " + b + "<br>");
+            document.write("Inside function: " + a + "<br>");
+        }
+
+        document.write("Outside function: " + a + "<br>");
+
+        // This line throw error.
+        // document.write("Outside function: " + b + "<br>");
+
+        checkScope();
+
+    </script>
+</body>
+
+</html>

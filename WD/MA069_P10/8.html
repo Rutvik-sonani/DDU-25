@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var n = [5, 2, 8, 1, 7, 3, 9, 4, 6];
+        var l = n[0];
+        var s = n[0];
+
+        for (var i = 1; i < n.length; i++) {
+            if (n[i] > l) l = n[i];
+            if (n[i] < s) s = n[i];
+        }
+
+        document.write("Largest: " + l + "<br>");
+        document.write("Smallest: " + s);
+    </script>
+</body>
+
+</html>
