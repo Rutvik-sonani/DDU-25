@@ -31,8 +31,8 @@ Only Pull Requests matching the **naming-conventions** (Folders and Files) will 
 ### Spam Users
 Users who spam this Repo with PRs/Issues that does not align the Contribution Guidelines will be **blocked**.
 
-[![Last Commit](https://img.shields.io/github/last-commit/Rutvik-sonani/ddu)](https://github.com/Rutvik-sonani/DDU)
+[![Last Commit](https://img.shields.io/github/last-commit/Rutvik-sonani/DDU-25)](https://github.com/Rutvik-sonani/DDU-25)
 ## Contributors
-[![contributors](https://contrib.rocks/image?repo=Rutvik-sonani/ddu)](https://github.com/Rutvik-sonani/ddu/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=Rutvik-sonani/DDU-25)](https://github.com/Rutvik-sonani/DDU-25/graphs/contributors)
 
 __Thank You!__ 
